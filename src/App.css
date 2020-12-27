@@ -57,6 +57,19 @@ a {
 .icon-indent {
 	margin: 0 5px;
 }
+.settings {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+.glassBlock {
+	background: rgba(155, 176, 207, 0.4);
+	border-radius: 15px;
+	padding: 0.75rem !important;
+}
+.time {
+	opacity: 0.5;
+}
 @-webkit-keyframes fade {
 	0% {
 		background-position: 0% 50%;

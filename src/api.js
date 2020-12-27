@@ -7,6 +7,7 @@ const weatherData = Axios.create({
 
 weatherData.defaults.params = {
     "appid": "c207d3e9d7bff92feed6cc304b78424f",
+    "lang": "ru",
 };
 
 export let getWeatherDataByCity = city => {
