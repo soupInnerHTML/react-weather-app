@@ -1,14 +1,81 @@
-.App {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+::-moz-selection {
+	background: rgba(0, 0, 0, 0.1);
 }
-
+::selection {
+	background: rgba(0, 0, 0, 0.1);
+}
 a {
 	color: #61dafb;
+}
+.App {
+	color: white;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	-webkit-animation: fade 15s ease infinite;
+	animation: fade 15s ease infinite;
+}
+.Clear {
+	background: linear-gradient(to right, #00409a, #7b9cb5);
+	background-size: 120% 120%;
+}
+.Snow {
+	background: linear-gradient(to right, #345d82, #f1f5ff);
+	background-size: 120% 120%;
+}
+.Rain {
+	background: linear-gradient(to bottom, #314251, #db9f90);
+	background-size: 120% 120%;
+}
+.Clouds {
+	background: linear-gradient(to right, #345d82, #f1f5ff);
+	background-size: 120% 120%;
+}
+.temp {
+	margin-top: 10%;
+	position: relative;
+}
+.temp__emu {
+	font-size: 0.5em;
+	vertical-align: super;
+}
+.temp__num {
+	font-size: 10em;
+	line-height: 0;
+	margin: 0;
+	font-weight: 100;
+}
+.temp__weather-type {
+	margin-top: 1.5em;
+	font-size: 3em;
+}
+.location {
+	padding: 20px;
+}
+.icon-indent {
+	margin: 0 5px;
+}
+@-webkit-keyframes fade {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes fade {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
