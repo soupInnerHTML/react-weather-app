@@ -1,0 +1,85 @@
+@mixin weather($fromColor, $toColor, $image: "", $to: to right) {
+	background: url($image), linear-gradient($to, $fromColor, $toColor);
+	background-size: 120% 120%;
+}
+
+::selection {
+	background: rgba(0, 0, 0, 0.1);
+}
+a {
+	color: #61dafb;
+}
+.App {
+	color: white;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	animation: fade 15s ease infinite alternate;
+	* {
+		text-shadow: 2px 2px 20px rgba(150, 150, 150, 1);
+	}
+}
+.Clear {
+	@include weather(#00409a, #7b9cb5);
+}
+.Snow {
+	// ./media/img/snow.gif
+	@include weather(#345d82, #f1f5ff, "./media/img/snow.gif");
+	animation: none;
+}
+.Rain {
+	@include weather(#314251, #db9f90, "", to bottom);
+}
+.Clouds {
+	@include weather(#345d82, #f1f5ff, "./media/img/cloud-01.png");
+}
+.temp {
+	margin-top: 10%;
+	position: relative;
+}
+.temp__emu {
+	font-size: 0.5em;
+	vertical-align: super;
+}
+.temp__num {
+	font-size: 10em;
+	line-height: 0;
+	margin: 0;
+	font-weight: 100;
+}
+.temp__weather-type {
+	margin-top: 1.5em;
+	font-size: 3em;
+}
+.location {
+	padding: 20px;
+}
+.icon-indent {
+	margin: 0 5px;
+}
+.settings {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+.glassBlock {
+	background: rgba(155, 176, 207, 0.4);
+	border-radius: 15px;
+	padding: 0.75rem !important;
+}
+.time {
+	opacity: 0.5;
+}
+@keyframes fade {
+	0% {
+		background-position: 0% 50%;
+	}
+	/* 50% {
+		background-position: 100% 50%;
+	} */
+	100% {
+		background-position: 100% 100%;
+	}
+}

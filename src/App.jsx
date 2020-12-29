@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import "./App.css";
 import "materialize-css/dist/css/materialize.min.css"
 import M from "materialize-css"
@@ -6,30 +7,29 @@ import cs from "classnames"
 import Location from "./components/Location";
 import MainWeather from "./components/MainWeather";
 import Settings from "./components/Settings";
-// import { parseToC } from "./utils"
 import { getWeatherDataByCity, getWeatherDataByCoords } from "./api"
-// import { doAsync } from "./utils"
 
 
 const App = () => {
-    // const [temp, setTemp] = useState("")
     const [weatherType, setWeatherType] = useState("")
     const [weather, setWeather] = useState(0)
     const [visibility, setVisibility] = useState(0)
     const [wind, setWind] = useState(0)
-    const [time, setTime] = useState(0)
-    const [location, setLocation] = useState("Москва")
+    const [tz, setTz] = useState(0)
+    const [location, setLocation] = useState("Пермь")
     const [coords, setCoords] = useState({})
-    // const [errorState, setError] = useState(false)
     const units = "°"
     const weatherRender = data => {
-        // setTemp(parseToC(data.main.temp))
         setWeatherType(data.weather[0].main)
         setWeather(data.main)
         setWind(data.wind)
         setVisibility(data.visibility)
-        setTime(data.dt)
+        setTz(data.timezone)
         console.log(data)
+    }
+
+    const __GLOBAL__ = {
+        tz,
     }
 
     useEffect(() => {
@@ -58,13 +58,13 @@ const App = () => {
 
     }, [coords.latitude, coords.longitude])
     
-    let { pressure, temp, humidity, } = weather
+    let { pressure, temp, humidity, feels_like, } = weather
 
     return (
         <div className={ cs("App", weatherType) }>
             <Settings></Settings>
-            <Location { ...{ location, time, } }></Location>
-            <MainWeather { ...{ temp, weatherType, units, pressure, wind, humidity, visibility, } }></MainWeather>
+            <Location { ...{ location, tz, } }></Location>
+            <MainWeather { ...{ temp, weatherType, units, pressure, wind, humidity, visibility, feels_like, } }></MainWeather>
         </div>
     );
 }
