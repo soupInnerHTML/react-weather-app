@@ -10,7 +10,7 @@ a {
 	color: #61dafb;
 }
 .App {
-	color: white;
+	color: #fff;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -25,33 +25,33 @@ a {
 	@include weather(#00409a, #7b9cb5);
 }
 .Snow {
-	// ./media/img/snow.gif
-	@include weather(#345d82, #f1f5ff, "./media/img/snow.gif");
+	// ./assets/img/snow.gif
+	@include weather(#345d82, #f1f5ff, "./assets/img/snow.gif");
 	animation: none;
 }
 .Rain {
 	@include weather(#314251, #db9f90, "", to bottom);
 }
 .Clouds {
-	@include weather(#345d82, #f1f5ff, "./media/img/cloud-01.png");
+	@include weather(#345d82, #f1f5ff, "./assets/img/cloud-01.png");
 }
 .temp {
 	margin-top: 10%;
 	position: relative;
-}
-.temp__emu {
-	font-size: 0.5em;
-	vertical-align: super;
-}
-.temp__num {
-	font-size: 10em;
-	line-height: 0;
-	margin: 0;
-	font-weight: 100;
-}
-.temp__weather-type {
-	margin-top: 1.5em;
-	font-size: 3em;
+	&__emu {
+		font-size: 0.5em;
+		vertical-align: super;
+	}
+	&__num {
+		font-size: 10em;
+		line-height: 0;
+		margin: 0;
+		font-weight: 100;
+	}
+	&__weather-type {
+		margin-top: 1.5em;
+		font-size: 3em;
+	}
 }
 .location {
 	padding: 20px;
@@ -74,7 +74,7 @@ a {
 }
 @keyframes fade {
 	0% {
-		background-position: 0% 50%;
+		background-position: 0 50%;
 	}
 	/* 50% {
 		background-position: 100% 50%;
@@ -82,4 +82,18 @@ a {
 	100% {
 		background-position: 100% 100%;
 	}
+}
+.my-node-enter {
+	opacity: 0;
+}
+.my-node-enter-active {
+	opacity: 1;
+	transition: opacity 1000ms;
+}
+.my-node-exit {
+	opacity: 1;
+}
+.my-node-exit-active {
+	opacity: 0;
+	transition: opacity 1000ms;
 }
