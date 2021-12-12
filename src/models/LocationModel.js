@@ -1,5 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import WeatherModel from "./WeatherModel";
+import ForecastModel from "./ForecastModel";
+import M from "materialize-css";
 
 class LocationModel {
     timezone
@@ -9,11 +11,19 @@ class LocationModel {
         navigator
             .geolocation
             .getCurrentPosition(
-                position => {
-                    WeatherModel.getWeatherDataByCoords(position.coords)
+                async position => {
+                    ForecastModel.getDataByCoords(position.coords)
+                    const data = await WeatherModel.getDataByCoords(position.coords)
+                    this.city = data?.name
+                    this.timezone = data?.timezone
                 },
                 () => {
-                    WeatherModel.getWeatherDataByCity(this.city)
+                    [WeatherModel, ForecastModel].forEach(m => m.getDataByCity(this.city))
+                    M.toast({
+                        html: "<span>Geolocation has been turned off</span><button class=\"btn-flat toast-action\" style=\"color: #fff\" onclick=\"M.Toast.dismissAll()\">close</button>",
+                        classes: "orange lighten-1",
+                        displayLength: Number.MAX_VALUE,
+                    })
                 },
                 {
                     enableHighAccuracy: true,
@@ -23,6 +33,7 @@ class LocationModel {
 
     constructor() {
         makeAutoObservable(this)
+        this.getLocation()
     }
 }
 

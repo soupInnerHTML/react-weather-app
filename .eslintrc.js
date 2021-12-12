@@ -6,7 +6,7 @@ module.exports = {
     extends: [
         "react-app"
     ],
-    parser: "babel-eslint",
+    parser: "@typescript-eslint/parser",
     parserOptions: {
         ecmaFeatures: {
             jsx: true,

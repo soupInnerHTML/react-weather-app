@@ -1,6 +1,11 @@
-@mixin weather($fromColor, $toColor, $image: "", $to: to right) {
+@mixin weather($fromColor, $toColor, $image: "", $static: false, $to: to right) {
 	background: url($image), linear-gradient($to, $fromColor, $toColor);
 	background-size: 120% 120%;
+
+	@if $static {
+		background-size: auto;
+		animation: none;
+	}
 }
 
 ::selection {
@@ -20,21 +25,24 @@ a {
 	* {
 		text-shadow: 2px 2px 20px rgba(150, 150, 150, 1);
 	}
+	@include weather(#345d82, #f1f5ff);  //default bg
 }
 .Clear {
 	@include weather(#00409a, #7b9cb5);
 }
 .Snow {
-	// ./assets/img/snow.gif
-	@include weather(#345d82, #f1f5ff, "./assets/img/snow.gif");
-	animation: none;
+	@include weather(#345d82, #f1f5ff, "./assets/img/snow.gif", true);
 }
 .Rain {
-	@include weather(#314251, #db9f90, "", to bottom);
+	@include weather(#314251, #db9f90, "./assets/img/rain.gif", true, to bottom);
 }
 .Clouds {
-	@include weather(#345d82, #f1f5ff, "./assets/img/cloud-01.png");
+	@include weather(#345d82, #f1f5ff, "./assets/img/cloud.png");
 }
+.Mist {
+	@include weather(#666, #000, "./assets/img/fog.png");
+}
+
 .temp {
 	margin-top: 10%;
 	position: relative;
@@ -68,6 +76,12 @@ a {
 	background: rgba(155, 176, 207, 0.4);
 	border-radius: 15px;
 	padding: 0.75rem !important;
+	&_Rain {
+		background: rgba(74, 79, 90, 0.2);
+	}
+	&_Mist {
+		background: rgba(0, 0, 0, 0.2);
+	}
 }
 .time {
 	opacity: 0.5;
@@ -96,4 +110,16 @@ a {
 .my-node-exit-active {
 	opacity: 0;
 	transition: opacity 1000ms;
+}
+
+.forecast-card {
+	width: 15%;
+	p {
+		margin: 0;
+	}
+}
+
+.test {
+	display: flex;
+	overflow: hidden
 }

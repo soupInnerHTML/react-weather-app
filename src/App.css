@@ -14,6 +14,8 @@ a {
   right: 0;
   left: 0;
   animation: fade 15s ease infinite alternate;
+  background: url(""), linear-gradient(to right, #345d82, #f1f5ff);
+  background-size: 120% 120%;
 }
 .App * {
   text-shadow: 2px 2px 20px #969696;
@@ -27,16 +29,24 @@ a {
 .Snow {
   background: url("./assets/img/snow.gif"), linear-gradient(to right, #345d82, #f1f5ff);
   background-size: 120% 120%;
+  background-size: auto;
   animation: none;
 }
 
 .Rain {
-  background: url(""), linear-gradient(to bottom, #314251, #db9f90);
+  background: url("./assets/img/rain.gif"), linear-gradient(to bottom, #314251, #db9f90);
   background-size: 120% 120%;
+  background-size: auto;
+  animation: none;
 }
 
 .Clouds {
-  background: url("./assets/img/cloud-01.png"), linear-gradient(to right, #345d82, #f1f5ff);
+  background: url("./assets/img/cloud.png"), linear-gradient(to right, #345d82, #f1f5ff);
+  background-size: 120% 120%;
+}
+
+.Mist {
+  background: url("./assets/img/fog.png"), linear-gradient(to right, #666, #000);
   background-size: 120% 120%;
 }
 
@@ -78,6 +88,12 @@ a {
   border-radius: 15px;
   padding: 0.75rem !important;
 }
+.glassBlock_Rain {
+  background: rgba(74, 79, 90, 0.2);
+}
+.glassBlock_Mist {
+  background: rgba(0, 0, 0, 0.2);
+}
 
 .time {
   opacity: 0.5;
@@ -110,6 +126,18 @@ a {
 .my-node-exit-active {
   opacity: 0;
   transition: opacity 1000ms;
+}
+
+.forecast-card {
+  width: 15%;
+}
+.forecast-card p {
+  margin: 0;
+}
+
+.test {
+  display: flex;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=App.css.map */

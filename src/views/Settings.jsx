@@ -1,10 +1,10 @@
-import React from "react"
+
 
 const Settings = () => {
     return (
         <div className="settings">
             <a data-target='dropdown1' className="dropdown-trigger btn btn-floating btn-large waves-effect white">
-                <i className="material-icons blue-text">add</i>
+                <i className="material-icons blue-text">settings</i>
             </a>
 
             <ul id='dropdown1' className='dropdown-content'>
